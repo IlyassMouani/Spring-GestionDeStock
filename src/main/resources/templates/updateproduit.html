@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="templates" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un produit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            padding-top: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .form-header {
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .btn-primary {
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            border-color: #0056b3;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .text-danger {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="form-header">
+            <h1>Modifier produit</h1>
+        </div>
+        <div class="p-4">
+            <form action="/ajouterP" method="post">
+                <input type="hidden" name="id" th:value="${ProduitToBeUpdated.id}">
+                <div class="mb-3">
+                    <label for="name" class="form-label"> Name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:value="${ProduitToBeUpdated.name}" required>
+                    <span class="text-danger" th:errors="${ProduitToBeUpdated.name}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description" th:value="${ProduitToBeUpdated.description}" required>
+                    <span class="text-danger" th:errors="${ProduitToBeUpdated.description}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="tel" class="form-control" id="price" name="price" th:value="${ProduitToBeUpdated.price}" required>
+                    <span class="text-danger" th:errors="${ProduitToBeUpdated.price}"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

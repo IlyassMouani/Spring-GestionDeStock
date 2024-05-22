@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des hôtels</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-very-light-green {
+            background-color: #e6ffe6;
+        }
+    </style>
+</head>
+<body class="bg-very-light-green">
+<div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="bg-white shadow-lg w-64 p-6">
+        <div class="flex items-center justify-center mb-8">
+            <img class="h-12 w-12" src="https://static.vecteezy.com/system/resources/previews/013/083/985/original/cardboard-box-opened-png.png" >
+        </div>
+        <nav>
+            <ul>
+                <li class="mb-2">
+                    <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-200 hover:text-green-700" th:href="@{listcustomer}">List Customer</a>
+                </li>
+                <li class="mb-2">
+                    <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-200 hover:text-green-700" th:href="@{listproduit}">List Produit</a>
+                </li>
+                <li class="mb-2">
+                    <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-green-200 hover:text-green-700" th:href="@{listfournisseur}">List Fournisseur</a>
+                </li>
+                <li class="mb-2">
+                    <div class="relative">
+                        <button class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-green-200 hover:text-green-700" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Manage <span class="ml-1">&#9662;</span>
+                        </button>
+                        <ul class="dropdown-menu mt-1">
+
+                            <li><a class="dropdown-item text-black" th:href="@{ajoutercustomer}">Add Customer</a></li>
+                            <li><a class="dropdown-item text-black" th:href="@{ajouterproduit}">Add Produit</a></li>
+                            <li><a class="dropdown-item text-black" th:href="@{ajouterfournisseur}">Add Fournisseur</a></li>
+
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a th:href="@{/logout}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex-1 p-10">
+        <header class="bg-green-200 shadow p-4 mb-6">
+            <h1 class="text-3xl font-bold tracking-tight text-white">Gestion de stock</h1>
+        </header>
+        <main>
+            <div class="bg-white p-6 rounded shadow">
+                <!-- Ajoutez ici le contenu de votre tableau ou d'autres éléments -->
+                <section layout:fragment="content"></section>
+            </div>
+        </main>
+    </div>
+</div>
+
+<footer class="mt-6 p-4 text-center bg-white shadow">
+    &copy; copyright: Mouani Ilyass
+
+</footer>
+</body>
+</html>

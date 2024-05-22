@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .formbold-main-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px;
+            min-height: 100vh;
+        }
+        .formbold-form-wrapper {
+            margin: 0 auto;
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .formbold-form-input {
+            width: 100%;
+            padding: 13px 22px;
+            border-radius: 5px;
+            border: 1px solid #dde3ec;
+            background: #ffffff;
+            font-weight: 500;
+            font-size: 16px;
+            color: #536387;
+            outline: none;
+            resize: none;
+        }
+        .formbold-form-input::placeholder {
+            color: rgba(83, 99, 135, 0.5);
+        }
+        .formbold-form-input:focus {
+            border-color: #6a64f1;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        .formbold-form-label {
+            color: #536387;
+            font-size: 14px;
+            line-height: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .formbold-btn {
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 14px 25px;
+            border: none;
+            font-weight: 500;
+            background-color: #6a64f1;
+            color: white;
+            cursor: pointer;
+            margin-top: 25px;
+            width: 100%;
+            text-align: center;
+        }
+        .formbold-btn:hover {
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        .formbold-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .formbold-footer p {
+            color: #536387;
+            font-size: 14px;
+        }
+        .formbold-footer a {
+            color: #6a64f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .formbold-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <form action="/login" method="post">
+            <div class="formbold-mb-3">
+                <label for="username" class="formbold-form-label">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" class="formbold-form-input" required>
+            </div>
+            <div class="formbold-mb-3">
+                <label for="password" class="formbold-form-label">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" class="formbold-form-input" required>
+            </div>
+            <button type="submit" class="formbold-btn">Sign in</button>
+        </form>
+        <div class="formbold-footer">
+            <p>Don't have an account? <a href="/rregister">Register here</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="templates" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un client</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            padding-top: 40px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .form-header {
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .btn-primary {
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            border-color: #0056b3;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .text-danger {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="form-header">
+            <h1>Modifier Client</h1>
+        </div>
+        <div class="p-4">
+            <form action="/ajouter" method="post">
+                <input type="hidden" name="id" th:value="${CustomerToBeUpdated.id}">
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" th:value="${CustomerToBeUpdated.firstname}" required>
+                    <span class="text-danger" th:errors="${CustomerToBeUpdated.firstname}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" th:value="${CustomerToBeUpdated.lastname}" required>
+                    <span class="text-danger" th:errors="${CustomerToBeUpdated.lastname}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" th:value="${CustomerToBeUpdated.phone}" required>
+                    <span class="text-danger" th:errors="${CustomerToBeUpdated.phone}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" th:value="${CustomerToBeUpdated.city}" required>
+                    <span class="text-danger" th:errors="${CustomerToBeUpdated.city}"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" th:value="${CustomerToBeUpdated.email}" required>
+                    <span class="text-danger" th:errors="${CustomerToBeUpdated.email}"></span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

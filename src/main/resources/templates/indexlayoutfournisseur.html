@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="templates" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Fournisseur List</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>  <style>
+    body {
+        background-color: #e9f4fb; /* Fond bleu clair doux */
+        font-family: 'Arial', sans-serif; /* Utilisation d'une police de caractères courante */
+        padding-top: 20px; /* Espace en haut de la page */
+    }
+
+    .container {
+        border: 1px solid #d1e3f1; /* Bordure bleu clair */
+        border-radius: 10px; /* Coins arrondis */
+        padding: 20px; /* Espacement à l'intérieur du conteneur */
+        background-color: #fff; /* Fond blanc */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    }
+
+    h1 {
+        color: #5a5a5a; /* Couleur de titre gris foncé */
+        text-align: center; /* Centrer le titre */
+        margin-bottom: 20px; /* Espace en bas du titre */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Couleur de fond de bouton bleu */
+        border-color: #007bff; /* Couleur de bordure identique à la couleur de fond */
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Couleur de fond de bouton bleu plus foncé au survol */
+        border-color: #0056b3; /* Couleur de bordure identique à la couleur de fond */
+    }
+
+    .btn-outline-primary {
+        color: #007bff; /* Couleur de texte bleu */
+        border-color: #007bff; /* Couleur de bordure bleu */
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff; /* Couleur de fond bleu au survol */
+        color: #fff; /* Couleur de texte blanc au survol */
+    }
+
+    table {
+        border-collapse: collapse; /* Fusionner les bordures de table */
+        width: 100%; /* Largeur de la table */
+    }
+
+    th, td {
+        border: 1px solid #d1e3f1; /* Bordures des cellules bleu clair */
+        padding: 8px; /* Espacement à l'intérieur des cellules */
+        text-align: left; /* Alignement du texte à gauche */
+    }
+
+    th {
+        background-color: #007bff; /* Fond de cellule bleu pour les en-têtes */
+        color: #fff; /* Texte blanc pour les en-têtes */
+    }
+
+    tr:nth-child(even) {
+        background-color: #f1f9ff; /* Fond de ligne bleu très clair pour les lignes paires */
+    }
+
+    tr:nth-child(odd) {
+        background-color: #fff; /* Fond de ligne blanc pour les lignes impaires */
+    }
+
+    .nav-pills .nav-link {
+        margin: 5px; /* Espace entre les liens de navigation */
+    }
+</style>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="p-3 m-2">
+        <div class="card">
+            <div class="card-header">Liste des fournisseurs
+                <form method="get" th:action="@{listfournisseur}" class="d-flex">
+                    <input type="text" name="search" class="form-control me-2" th:value="${keyword}" placeholder="Rechercher un fournisseur"/>
+                    <button class="btn btn-primary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div class="card-body">
+
+
+
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>City</th>
+                            <th>Email</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="p: ${listFournisseur}">
+                            <td th:text="${p.getFirstname()}"></td>
+                            <td th:text="${p.getLastname()}"></td>
+                            <td th:text="${p.getPhone()}"></td>
+                            <td th:text="${p.getCity()}"></td>
+                            <td th:text="${p.getEmail()}"></td>
+                            <td>
+                                <a th:href="@{editfournisseur(id=${p.getId()})}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-pencil" viewBox="0 0 16 16">
+                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                                    </svg>
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{deletefournisseur(id=${p.getId()})}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                    </svg>
+                                </a>
+                            </td>
+
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item" th:each="p, stat: ${pages}">
+                                <a th:classappend="${stat.index == page} ? 'active' : ''"
+                                   class="nav-link"
+                                   th:text="${stat.index}"
+                                   th:href="@{listfournisseur(page=${stat.index},search=${keyword})}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
